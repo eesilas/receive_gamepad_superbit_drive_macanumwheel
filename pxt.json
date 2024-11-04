@@ -1,5 +1,6 @@
 {
     "name": "receive_gamepad_superbit_drive_macanumwheel",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",

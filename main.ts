@@ -12,6 +12,20 @@ function L () {
     35
     )
 }
+function FF () {
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M1,
+    255,
+    SuperBit.enMotors.M3,
+    255
+    )
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M2,
+    255,
+    SuperBit.enMotors.M4,
+    255
+    )
+}
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 12) {
         F()
@@ -21,6 +35,12 @@ radio.onReceivedNumber(function (receivedNumber) {
         R()
     } else if (receivedNumber == 14) {
         S()
+    } else if (receivedNumber == 1) {
+        SL()
+    } else if (receivedNumber == 2) {
+        SR()
+    } else if (receivedNumber == 3) {
+        FF()
     } else {
         basic.showIcon(IconNames.Silly)
     }
@@ -35,6 +55,20 @@ function F () {
     SuperBit.MotorRunDual(
     SuperBit.enMotors.M2,
     35,
+    SuperBit.enMotors.M4,
+    35
+    )
+}
+function SL () {
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M1,
+    35,
+    SuperBit.enMotors.M2,
+    -35
+    )
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M3,
+    -35,
     SuperBit.enMotors.M4,
     35
     )
@@ -65,6 +99,20 @@ function S () {
     0,
     SuperBit.enMotors.M4,
     0
+    )
+}
+function SR () {
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M1,
+    -35,
+    SuperBit.enMotors.M2,
+    35
+    )
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M3,
+    35,
+    SuperBit.enMotors.M4,
+    -35
     )
 }
 radio.setTransmitPower(7)

@@ -1,6 +1,9 @@
 def L():
     SuperBit.motor_run_dual(SuperBit.enMotors.M1, 15, SuperBit.enMotors.M3, 35)
     SuperBit.motor_run_dual(SuperBit.enMotors.M2, 15, SuperBit.enMotors.M4, 35)
+def FF():
+    SuperBit.motor_run_dual(SuperBit.enMotors.M1, 255, SuperBit.enMotors.M3, 255)
+    SuperBit.motor_run_dual(SuperBit.enMotors.M2, 255, SuperBit.enMotors.M4, 255)
 
 def on_received_number(receivedNumber):
     if receivedNumber == 12:
@@ -10,7 +13,11 @@ def on_received_number(receivedNumber):
     elif receivedNumber == 10:
         R()
     elif receivedNumber == 14:
-        pass
+        S()
+    elif receivedNumber == 1:
+        SL()
+    elif receivedNumber == 2:
+        SR()
     else:
         basic.show_icon(IconNames.SILLY)
 radio.on_received_number(on_received_number)
@@ -18,9 +25,18 @@ radio.on_received_number(on_received_number)
 def F():
     SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M3, 35)
     SuperBit.motor_run_dual(SuperBit.enMotors.M2, 35, SuperBit.enMotors.M4, 35)
+def SL():
+    SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M2, -35)
+    SuperBit.motor_run_dual(SuperBit.enMotors.M3, -35, SuperBit.enMotors.M4, 35)
 def R():
     SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M3, 15)
     SuperBit.motor_run_dual(SuperBit.enMotors.M2, 35, SuperBit.enMotors.M4, 15)
+def S():
+    SuperBit.motor_run_dual(SuperBit.enMotors.M1, 0, SuperBit.enMotors.M3, 0)
+    SuperBit.motor_run_dual(SuperBit.enMotors.M2, 0, SuperBit.enMotors.M4, 0)
+def SR():
+    SuperBit.motor_run_dual(SuperBit.enMotors.M1, -35, SuperBit.enMotors.M2, 35)
+    SuperBit.motor_run_dual(SuperBit.enMotors.M3, 35, SuperBit.enMotors.M4, -35)
 radio.set_transmit_power(7)
 radio.set_group(77)
 

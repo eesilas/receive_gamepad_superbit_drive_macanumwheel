@@ -114,11 +114,17 @@ function B () {
 }
 function LED () {
     SuperBit.RGB_Program().showRainbow(1, 360)
+    basic.pause(100)
     SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Red))
+    basic.pause(100)
     SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Orange))
+    basic.pause(100)
     SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Yellow))
+    basic.pause(100)
     SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Green))
+    basic.pause(100)
     SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.White))
+    basic.pause(100)
     SuperBit.RGB_Program().show()
     SuperBit.RGB_Program().showRainbow(1, 360)
 }

@@ -15,9 +15,13 @@ def on_received_number(receivedNumber):
     elif receivedNumber == 14:
         S()
     elif receivedNumber == 1:
-        SL()
-    elif receivedNumber == 2:
         SR()
+    elif receivedNumber == 2:
+        SL()
+    elif receivedNumber == 3:
+        FF()
+    elif receivedNumber == 6:
+        pass
     else:
         basic.show_icon(IconNames.SILLY)
 radio.on_received_number(on_received_number)
@@ -28,6 +32,9 @@ def F():
 def SL():
     SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M2, -35)
     SuperBit.motor_run_dual(SuperBit.enMotors.M3, -35, SuperBit.enMotors.M4, 35)
+def Spin():
+    SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M3, -35)
+    SuperBit.motor_run_dual(SuperBit.enMotors.M2, 35, SuperBit.enMotors.M4, -35)
 def R():
     SuperBit.motor_run_dual(SuperBit.enMotors.M1, 35, SuperBit.enMotors.M3, 15)
     SuperBit.motor_run_dual(SuperBit.enMotors.M2, 35, SuperBit.enMotors.M4, 15)

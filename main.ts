@@ -29,18 +29,29 @@ function FF () {
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 12) {
         F()
+        basic.showArrow(ArrowNames.North)
     } else if (receivedNumber == 4) {
         L()
+        basic.showArrow(ArrowNames.NorthEast)
     } else if (receivedNumber == 10) {
         R()
+        basic.showArrow(ArrowNames.SouthEast)
     } else if (receivedNumber == 14) {
         S()
     } else if (receivedNumber == 1) {
-        SL()
-    } else if (receivedNumber == 2) {
         SR()
+        basic.showArrow(ArrowNames.West)
+    } else if (receivedNumber == 2) {
+        SL()
+        basic.showArrow(ArrowNames.East)
     } else if (receivedNumber == 3) {
         FF()
+        basic.showIcon(IconNames.Triangle)
+    } else if (receivedNumber == 6) {
+        Spin()
+        music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Prelude), music.PlaybackMode.InBackground)
+    } else if (receivedNumber == 8) {
+        B()
     } else {
         basic.showIcon(IconNames.Silly)
     }
@@ -73,6 +84,44 @@ function SL () {
     35
     )
 }
+function Spin () {
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M1,
+    35,
+    SuperBit.enMotors.M3,
+    -35
+    )
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M2,
+    35,
+    SuperBit.enMotors.M4,
+    -35
+    )
+}
+function B () {
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M1,
+    -35,
+    SuperBit.enMotors.M3,
+    -35
+    )
+    SuperBit.MotorRunDual(
+    SuperBit.enMotors.M2,
+    -35,
+    SuperBit.enMotors.M4,
+    -35
+    )
+}
+function LED () {
+    SuperBit.RGB_Program().showRainbow(1, 360)
+    SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Red))
+    SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Orange))
+    SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Yellow))
+    SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.Green))
+    SuperBit.RGB_Program().showColor(neopixel.colors(NeoPixelColors.White))
+    SuperBit.RGB_Program().show()
+    SuperBit.RGB_Program().showRainbow(1, 360)
+}
 function R () {
     SuperBit.MotorRunDual(
     SuperBit.enMotors.M1,
@@ -88,6 +137,7 @@ function R () {
     )
 }
 function S () {
+    music.stopAllSounds()
     SuperBit.MotorRunDual(
     SuperBit.enMotors.M1,
     0,
@@ -118,5 +168,12 @@ function SR () {
 radio.setTransmitPower(7)
 radio.setGroup(77)
 basic.forever(function () {
-	
+    LED()
+    basic.showLeds(`
+        # # . # #
+        . # . # .
+        . . . . .
+        # # # # #
+        . . # . .
+        `)
 })
